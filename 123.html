@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    html{
+
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    
+        overflow: hidden;
+    
+    }
+
+    body{
+        width: 100%;
+        background-image: url('image/1.png');
+        position: absolute;
+        top: 50%; left: 50%;
+        background-size: cover;
+        background-position: center;
+        transform: translate(-50%, -50%);
+        transition: all 2s;
+    }
+
+    p{
+        text-align: center;
+        color: white;
+        font-size: 52px;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
+        font-weight: bold;
+    }
+
+    @font-face {
+        font-family: 'PuradakGentleGothicR';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.1/PuradakGentleGothicR.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    #timer{
+        margin-bottom: 40px;
+        -ms-user-select: none; 
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .title{
+        -ms-user-select: none; 
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        font-family: 'PuradakGentleGothicR';
+    }
+
+    .btn_line{
+        text-align: center;
+        z-index: 5;
+    }
+
+    .icon{
+        width: 80px;
+        height: 80px;
+        z-index: 999;
+    }
+
+    img{
+        height: 80px;
+        border-radius: 7px;
+    }
+
+    a:first-child{
+        margin-right: 30px;
+    }
+
+    .none{
+        height: 0px;
+        width: 0px;
+        z-index: 1;
+    }
+</style>
+<body id="image">
+    <p class="title">#OVERCLASS</p>
+    <p class="title">COUNT DOWN</p>
+    <p id="timer">00Day 00:00:00</p>
+    <div class="btn_line">
+        <a class="icon" href="https://cafe.naver.com/overclasserver"><img src="image/naver_icon.png"></a>
+        <a class="icon" href="https://discord.gg/8Yxw5MG5"><img src="image/discord_icon.png"></a>
+    </div>
+    <img class="none" src="image/1.png" alt="">
+    <img class="none" src="image/2.png" alt="">
+    <img class="none" src="image/3.png" alt="">
+    <img class="none" src="image/4.png" alt="">
+    <img class="none" src="image/5.png" alt="">
+    <img class="none" src="image/6.png" alt="">
+    <img class="none" src="image/7.png" alt="">
+    <img class="none" src="image/8.png" alt="">
+    <img class="none" src="image/9.png" alt="">
+    <img class="none" src="image/10.png" alt="">
+    <img class="none" src="image/11.png" alt="">
+    <img class="none" src="image/12.png" alt="">
+    <img class="none" src="image/13.png" alt="">
+    <img class="none" src="image/14.png" alt="">
+    <img class="none" src="image/15.png" alt="">
+    <img class="none" src="image/16.png" alt="">
+    <img class="none" src="image/17.png" alt="">
+    <img class="none" src="image/18.png" alt="">
+    <img class="none" src="image/19.png" alt="">
+    <img class="none" src="image/20.png" alt="">
+    <img class="none" src="image/21.png" alt="">
+    <img class="none" src="image/22.png" alt="">
+    <img class="none" src="image/23.png" alt="">
+    <img class="none" src="image/24.png" alt="">
+    <img class="none" src="image/25.png" alt="">
+    <img class="none" src="image/26.png" alt="">
+    
+
+</body>
+<script>
+    var i = 1;
+    var image = document.getElementById('image');
+    const countDownTimer = function(id, date){
+        var _vDate = new Date(date); // 전달 받은 일자
+		var _second = 1000;
+		var _minute = _second * 60;
+		var _hour = _minute * 60;
+		var _day = _hour * 24;
+		var timer;
+
+        showRemaining()
+
+		function showRemaining() {
+			var now = new Date();
+			var distDt = _vDate - now;
+
+			if (distDt < 0) {
+				clearInterval(timer);
+				document.getElementById(id).textContent = 'CHECK community';
+				return;
+			}
+
+			var days = Math.floor(distDt / _day);
+			var hours = Math.floor((distDt % _day) / _hour);
+			var minutes = Math.floor((distDt % _hour) / _minute);
+			var seconds = Math.floor((distDt % _minute) / _second);
+
+			//document.getElementById(id).textContent = date.toLocaleString() + "까지 : ";
+			document.getElementById(id).textContent = days + '일 ';
+			document.getElementById(id).textContent += hours + '시간 ';
+			document.getElementById(id).textContent += minutes + '분 ';
+			document.getElementById(id).textContent += seconds + '초';
+
+         
+		}
+        timer = setInterval(showRemaining, 1000);
+    }
+
+    function imageChanger(){
+        i = ++i;
+        console.log(i);
+        if(i > 26){
+            i = 1;
+        }
+        image.style.backgroundImage = "url(image/"+i+".png)"
+        
+
+    }
+    setInterval(imageChanger, 5000)
+
+    countDownTimer('timer', '01/14/2023 07:00 PM');
+</script>
+</html>
